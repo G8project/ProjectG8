@@ -2,6 +2,7 @@ body {
   text-align: center;
 }
 
+/*ここから自分たちで書いたコード*/
 /* 罰ゲーム表示カスタムアラート */
 .overlay {
   display: none;
@@ -45,6 +46,20 @@ body {
   transform: translate(-50%, -30%);
 }
 
+#form {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+}
+
+#name {
+  width: 300px;
+}
+
+/*ここからは参考にしたコード*/
 /* start */
 #modal {
   position: absolute;
@@ -157,7 +172,7 @@ h2 {
   cursor: pointer;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -110%);
+  transform: translate(-50%, -215%);
   color: black;
   background: white;
 }

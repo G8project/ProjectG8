@@ -1,75 +1,89 @@
 "use strict";
 
 const BLACK = 1,
-  WHITE = -1;
+      WHITE = -1;
 let data = [];
 let turn = true;
 const board = document.getElementById("board");
 const h2 = document.querySelector("h2");
 const counter = document.getElementById("counter");
-const modal = document.getElementById("modal");
-document.querySelectorAll(".select").forEach((value) => {
-  value.addEventListener("click", start);
-});
 let cells = 8; // マスの数
+
+// 罰ゲームの内容を格納する配列
+let batu = [];
+// 今置いた石の場所を保存するためのx,y
+let nowx = 0,
+    nowy = 0;
 
 // 画面が読み込めた時に盤を形成
 window.onload = () => {
-  init();
-  modal.classList.add("hide");
+    init();
+    modal.classList.add("hide");
+}
+
+function start6() {
+    cells = 6;
+    turn = true;
+    board.innerHTML = "";
+    init();
 }
 
 // 初期化
 function init() {
-  for (let i = 0; i < cells; i++) {
-    const tr = document.createElement("tr");
-    data[i] = Array(cells).fill(0);
-    for (let j = 0; j < cells; j++) {
-      const td = document.createElement("td");
-      const disk = document.createElement("div");
-      tr.appendChild(td);
-      td.appendChild(disk);
-      td.className = "cell";
-      td.onclick = clicked;
+    for (let i = 0; i < cells; i++) {
+        const tr = document.createElement("tr");
+        data[i] = Array(cells).fill(0);
+        batu[i] = Array(cells).fill(0);
+        for (let j = 0; j < cells; j++) {
+            const td = document.createElement("td");
+            const disk = document.createElement("div");
+            tr.appendChild(td);
+            td.appendChild(disk);
+            td.className = "cell";
+            td.onclick = clicked;
+        }
+        board.appendChild(tr);
     }
-    board.appendChild(tr);
-  }
-  // マスの数によって石の初期配置を変える
-  switch (cells) {
-    case 6:
-      board.classList.add("cell-6");
-      putDisc(2, 2, WHITE);
-      putDisc(3, 3, WHITE);
-      putDisc(2, 3, BLACK);
-      putDisc(3, 2, BLACK);
-      break;
-    case 8:
-      putDisc(3, 3, WHITE);
-      putDisc(4, 4, WHITE);
-      putDisc(3, 4, BLACK);
-      putDisc(4, 3, BLACK);
-  }
-  showTurn();
+    // マスの数によって石の初期配置を変える
+    switch (cells) {
+        case 6:
+            board.classList.add("cell-6");
+            putDisc(2, 2, WHITE);
+            putDisc(3, 3, WHITE);
+            putDisc(2, 3, BLACK);
+            putDisc(3, 2, BLACK);
+            break;
+        case 8:
+            putDisc(3, 3, WHITE);
+            putDisc(4, 4, WHITE);
+            putDisc(3, 4, BLACK);
+            putDisc(4, 3, BLACK);
+    }
+    showTurn();
 }
 
 
 // 石を描画
 function putDisc(x, y, color) {
-  board.rows[y].cells[x].firstChild.className =
-    color === BLACK ? "black" : "white";
-  board.rows[y].cells[x].animate(
-    { opacity: [0.4, 1] },
-    { duration: 700, fill: "forwards" }
-  );
-  data[y][x] = color;
+    board.rows[y].cells[x].firstChild.className =
+        color === BLACK ? "black" : "white";
+    board.rows[y].cells[x].animate(
+        { opacity: [0.4, 1] },
+        { duration: 700, fill: "forwards" }
+    );
+    data[y][x] = color;
+    //置いた石に罰ゲームのマークを印字
+    if(x == nowx && y == nowy){
+        
+    };
 }
 
 // 手番などの表示
 function showTurn() {
   h2.textContent = turn ? "黒の番です" : "白の番です";
   let numWhite = 0,
-    numBlack = 0,
-    numEmpty = 0;
+      numBlack = 0,
+      numEmpty = 0;
   for (let x = 0; x < cells; x++) {
     for (let y = 0; y < cells; y++) {
       if (data[x][y] === WHITE) {
@@ -91,13 +105,13 @@ function showTurn() {
 
   if (numWhite + numBlack === cells * cells || (!blacDisk && !whiteDisk)) {
     if (numBlack > numWhite) {
-      document.getElementById("numBlack").textContent = numBlack + numEmpty;
+      document.getElementById("numBlack").textContent = numBlack;
       h2.textContent = "黒の勝ち!!";
       showAlertE();
       restartBtn();
       showAnime();
     } else if (numBlack < numWhite) {
-      document.getElementById("numWhite").textContent = numWhite + numEmpty;
+      document.getElementById("numWhite").textContent = numWhite;
       h2.textContent = "白の勝ち!!";
       showAlertE();
       restartBtn();
@@ -141,7 +155,18 @@ function clicked() {
   if (result.length > 0) {
     result.forEach((value) => {
       putDisc(value[0], value[1], color);
+      // ひっくり返したとき罰ゲームがあったら罰ゲームアラート表示
+      if(batu[value[0]][value[1]] !== 0){
+        showAlertB(value[0], value[1])
+        //罰ゲームの内容を消す
+        batu[value[0]][value[1]] = 0;
+      }
     });
+    // 今置いた場所を次に置くまで保存し、罰ゲーム入力フォーム表示関数を実行
+    nowx = x;
+    nowy = y;
+    showForm();
+    // 相手のターンに変える
     turn = !turn;
   }
   showTurn();
@@ -224,39 +249,6 @@ function checkReverse(color) {
   return false;
 }
 
-// パスカスタムアラート表示
-function showAlertP() {
-  document.getElementById('pussAlert').style.display = 'block';
-  document.getElementById('overlay').style.display = 'block';
-}
-// パスカスタムアラート非表示
-function hideAlertP() {
-  document.getElementById('pussAlert').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-}
-
-// 終了カスタムアラート表示
-function showAlertE() {
-  document.getElementById('endAlert').style.display = 'block';
-  document.getElementById('overlay').style.display = 'block';
-}
-// 終了カスタムアラート非表示
-function hideAlertE() {
-  document.getElementById('endAlert').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-}
-
-// 罰ゲームカスタムアラート表示
-function showAlertB() {
-  document.getElementById('batu-gameAlert').style.display = 'block';
-  document.getElementById('overlay').style.display = 'block';
-}
-// 罰ゲームカスタムアラート非表示
-function hideAlertB() {
-  document.getElementById('batu-gameAlert').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-}
-
 // ゲーム終了画面
 function restartBtn() {
   const restartBtn = document.getElementById("restartBtn");
@@ -274,3 +266,67 @@ function restartBtn() {
 function showAnime() {
   h2.animate({ opacity: [0, 1] }, { duration: 500, iterations: 4 });
 }
+
+
+// ここから自分達で書いたコード
+
+// パスカスタムアラート表示
+  function showAlertP() {
+    document.getElementById('pussAlert').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+  // パスカスタムアラート非表示
+  function hideAlertP() {
+    document.getElementById('pussAlert').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+  
+  // 終了カスタムアラート表示
+  function showAlertE() {
+    document.getElementById('endAlert').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+  // 終了カスタムアラート非表示
+  function hideAlertE() {
+    document.getElementById('endAlert').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+  
+  // 罰ゲームカスタムアラート表示
+  function showAlertB(x, y) {
+    document.getElementById('batu-game').textContent = batu[x][y];
+    document.getElementById('batu-gameAlert').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+  // 罰ゲームカスタムアラート非表示
+  function hideAlertB() {
+    document.getElementById('batu-gameAlert').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  // 罰ゲーム入力フォーム表示
+  function showForm() {
+    document.getElementById('form').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+
+    }
+    // 罰ゲーム入力フォーム非表示
+  function hideForm() {
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+document.querySelector('form').addEventListener('submit', function(event) {
+  // デフォルトのフォーム送信をキャンセル
+  event.preventDefault();
+  // フォームデータを取得
+  let formB = document.getElementById("name");
+  batu[nowx][nowy] = formB.value;
+  console.log(formB.value);
+  // 入力した罰ゲームを消去
+  formB.value = "";
+  // 入力フォームを非表示
+  hideForm();
+  //罰ゲームマークを駒に印字
+  
+});

@@ -1,0 +1,46 @@
+html {
+    font-size: 100%;
+}
+body{
+    text-align: center;
+}
+a {
+    text-decoration: none;
+}
+.align-center {
+    text-align: center;
+}
+
+body {
+    background-color: rgb(111, 179, 104);
+}
+
+.about {
+    max-width: 736px;
+    padding: 0 1.5rem;
+    margin: 3rem auto 4rem;
+}
+.select1,
+.select2,
+.select5{
+    display: inline-block;
+    font-size: 1.3rem;
+    background-color: rgba(0, 255, 255, 0.475);
+    color: #fff;
+    border-radius: 15px;
+    padding: .50rem 1.0rem;
+    transition: .5s;
+    margin: 2px;
+    margin-left: 1.5rem;
+    margin-right: 1rem;
+}
+.select4{
+    display: inline-block;
+    font-size: 1.5rem;
+    background-color: rgba(47, 110, 150, 0.475);
+    color: #fff;
+    border-radius: 15px;
+    padding: .50rem 1.0rem;
+    transition: .5s;
+    margin-bottom: 2rem;
+}

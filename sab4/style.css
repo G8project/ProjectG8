@@ -5,6 +5,7 @@ body {
     margin: 0;
     font-family: Arial, "游ゴシック","Yu Gothic", sans-serif;
     text-align: center; /* テキスト中央揃え */
+    background-color: rgba(0, 0, 0, 0.16); /* 黒色の背景色に透過効果を追加 */
     background-image: url(haikei.jpg);
 }
 
@@ -12,10 +13,11 @@ body {
 header {
     width: 100%;
     font-size: 30px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8); /* 黒色の背景色に透過効果を追加 */
     text-align: left;
     list-style: none;
 }
+
 
 header a {
     text-decoration: none;
@@ -34,6 +36,7 @@ body ul {
     font-weight: normal;
     display: flex;
     justify-content: center;
+    color: black;
 }
 
 nav li:not(:last-child) {
@@ -69,7 +72,7 @@ h3 {
     width: 80%;
     max-width: 1280px;
     text-align: left;
-    color: yellow;
+    color: rgb(7, 7, 108);
     font-size: 20px; 
 }
 
@@ -80,7 +83,7 @@ a:link {
 /* フッター */
 footer {
     padding: 15px 0;
-    background-color: blue;
+    background-color: rgba(0, 0, 255, 0.8); /* 青色の背景色に透過効果を追加 */
     color: #fff;
     text-align: center;
 }
@@ -102,12 +105,13 @@ address {
         font-size: 24px;
     }
 
-    h3{
+    h3 {
         font-size: 20px;
     }
 
     /* ナビゲーションのレイアウトを縦に変更 */
     body ul {
+        font-size: 19px;
         flex-direction: column;
         padding: 10px 0;
     }
@@ -133,5 +137,9 @@ address {
     /* アドレスのマージンを調整 */
     address {
         margin: 10px;
+    }
+
+    nav a:hover {
+        background-color: transparent; /* ホバー時の背景色を無効にする */
     }
 }

@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+/*ページ全体の設定 */
+body {
+    margin: 0;
+    font-family: Arial, "游ゴシック","Yu Gothic", sans-serif;
+    text-align: center; /* テキスト中央揃え */
+    background-image: url(haikei.jpg);
+}
+
+/* ヘッダー */
+header {
+    width: 100%;
+    font-size: 30px;
+    background-color: black;
+    text-align: left;
+    list-style: none;
+}
+
+header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+/* ナビゲーション */
+body ul {
+    list-style-type: none;
+    padding: 25px 0;
+    font-size: 24px;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+}
+
+nav li:not(:last-child) {
+    /*メニューの項目 (最後以外)　右側に空白を入れる*/
+    margin-right: 80px;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav a:hover {
+    background-color: lightgreen;
+}
+
+/* メインビジュアル */
+.main {
+    width: 100%;
+    max-width: 1280px;
+    height: auto;
+    margin: auto;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+#select4 p,
+#select2 p,
+#select1 p {
+    margin: auto;
+    width: 80%;
+    max-width: 1280px;
+    text-align: left;
+    color: yellow;
+    font-size: 20px; 
+}
+
+a:link {
+    padding: 20px;
+}
+
+/* フッター */
+footer {
+    padding: 15px 0;
+    background-color: blue;
+    color: #fff;
+    text-align: center;
+}
+
+address {
+    margin: 20px;
+}
+
+/* スマホ用のスタイル */
+@media (max-width: 767px) {
+
+    /* ヘッダーのフォントサイズを小さくする */
+    header {
+        font-size: 20px;
+    }
+
+    /* 見出しのフォントサイズを小さくする */
+    h1 {
+        font-size: 24px;
+    }
+
+    h3{
+        font-size: 20px;
+    }
+
+    /* ナビゲーションのレイアウトを縦に変更 */
+    body ul {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    nav li:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 10px; /* 各メニュー項目の間に余白を追加 */
+    }
+
+    /* 各セクションのパディングを調整 */
+    #select4 p,
+    #select2 p,
+    #select1 p {
+        font-size: 14px; /* フォントサイズを小さくする */
+        width: 90%; /* 横幅を調整 */
+    }
+
+    /* フッターのパディングを調整 */
+    footer {
+        padding: 10px 0;
+    }
+
+    /* アドレスのマージンを調整 */
+    address {
+        margin: 10px;
+    }
+}

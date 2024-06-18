@@ -3,6 +3,12 @@ body {
 }
 
 /*ここから自分たちで書いたコード*/
+/*
+#modoru {
+  display: none;
+}
+*/
+
 label {
     color: #622de9;
     font-size: 30px;
@@ -98,6 +104,18 @@ input[type=submit]:hover {
 
 #name {
     width: 300px;
+}
+
+.canPut{
+    color: rgb(224, 224, 224);
+    cursor: pointer;
+}
+
+#board p{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /*ここからは参考にしたコード*/

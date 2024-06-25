@@ -1,11 +1,72 @@
+
+html {
+  min-height: 100%;
+}
 body {
   text-align: center;
-}
-main {
-  display: inline-block;
-  position: relative;
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url(../images/ダウンロード.jpg);
 }
 
+
+/*ここから自分たちで書いたコード*/
+/* 罰ゲーム表示カスタムアラート */
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(54, 52, 52, 0.5);
+  z-index: 9999;
+}
+
+.batu-game-alert {
+  display: none;
+  position: fixed;
+  width: 300px;
+  padding: 20px;
+  background-color: #87c0f1;
+  color: #721c24;
+  border: 1px solid #87c0f1;
+  border-radius: 5px;
+  z-index: 10000;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
+
+/*パス＆ゲーム終了アラート*/
+.custom-alert {
+  display: none;
+  position: fixed;
+  width: 300px;
+  padding: 20px;
+  background-color: #87c0f1;
+  color: #721c24;
+  border: 1px solid #87c0f1;
+  border-radius: 5px;
+  z-index: 10000;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
+
+#form {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+}
+
+#name {
+  width: 300px;
+}
+
+
+/*ここからは参考にしたコード*/
 /* start */
 #modal {
   position: absolute;
@@ -43,7 +104,7 @@ p {
   background: #555555;
 }
 td.cell {
-  background: rgb(128, 216, 154);
+  background: rgb(37, 199, 86);
   width: 46px;
   height: 46px;
   margin: 2px;
@@ -82,7 +143,7 @@ h2 {
 }
 #counter {
   margin: 0 auto;
-  width: 350px;
+  width: 400px;
   display: flex;
   line-height: 50px;
   font-weight: bold;
@@ -104,6 +165,7 @@ h2 {
   height: 50px;
   border: solid 1px black;
   border-radius: 5px;
+  background: white;
 }
 
 /* end */
@@ -118,10 +180,65 @@ h2 {
   cursor: pointer;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -110%);
+  transform: translate(-50%, -215%);
   color: black;
   background: white;
 }
 .hide {
   display: none;
+}
+
+
+.cell div p {
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+    margin: 0 auto;
+}
+
+.cell-6 > tr > td > div > p {
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    margin: 0 auto;
+}
+
+.black2{
+  color:black;
+}
+.black3{
+  color: black;
+  font-size: 23px;
+}
+.select1{
+  display: inline-block;
+    position: relative;
+    font-size: 1.5rem;
+    background-color: rgba(143, 212, 255, 0.977);
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    padding:  0.5em;
+    transition: .5s;
+    margin-bottom: 2rem;
+}
+
+
+/*ディスプレイ表示------------------------------*/
+@media (min-width: 1000px) {
+  #naraberu{
+    display: flex;
+    margin-left: 30rem;
+    width: 800px;
+  }
+  #itirann{
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+  #modoru{
+    width: 800px;
+    padding-top: 50px;
+    margin-left: 17.5rem;
+  }
 }

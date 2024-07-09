@@ -5,12 +5,11 @@ body {
     margin: 0;
     font-family: Arial, "游ゴシック","Yu Gothic", sans-serif;
     text-align: center; /* テキスト中央揃え */
-    background-image: url(../images/ダウンロード.jpg);
-
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1),rgba(0,0,0,0.1)),url(../images/ダウンロード.jpg);
 }
 
-img{
-    width: 30%;
+img {
+    width: 25%;
     text-align: center;
     padding: 30px;
 }
@@ -23,26 +22,12 @@ img{
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,1);
-  }
-
-/* ヘッダー */
-header {
-    width: 100%;
-    font-size: 30px;
-    background-color: rgba(0, 0, 0, 0.8);
-    text-align: left;
-    list-style: none;
-}
-
-
-header a {
-    text-decoration: none;
-    color: #fff;
 }
 
 .selection {
     padding: 10px;
 }
+
 
 /* ナビゲーション */
 body ul {
@@ -52,7 +37,7 @@ body ul {
     font-weight: normal;
     display: flex;
     justify-content: center;
-    color: black;
+    color: #444; /* ダークグレー */
 }
 
 nav li:not(:last-child) {
@@ -62,11 +47,11 @@ nav li:not(:last-child) {
 
 nav a {
     text-decoration: none;
-    color: inherit;
+    color: #0066cc; /* ダークブルー */
 }
 
 nav a:hover {
-    background-color: lightgreen;
+    background-color: #cce7ff; /* ライトブルー */
 }
 
 /* メインビジュアル */
@@ -79,16 +64,20 @@ nav a:hover {
 
 h3 {
     font-size: 25px;
+    color: #0066cc; /* ダークブルー */
 }
 
-#tyui{
+#tyui {
     margin: auto;
     width: 80%;
     max-width: 1280px;
-    text-align: left;
-    color: rgb(209, 7, 108);
+    text-align: center;
+    color: black; /* ダークピンク */
+    background-color: yellow;
     font-size: 35px;
     font-weight: bold;
+    margin-bottom: 60px;
+    border-radius: 30px;
 }
 
 #select4 p,
@@ -98,9 +87,41 @@ h3 {
     width: 80%;
     max-width: 1280px;
     text-align: left;
-    color: rgb(7, 7, 108);
+    color: #073374; /* ダークブルー */
     font-size: 20px; 
     line-height: 40px;
+
+}
+
+
+#select4{
+    background-color:rgba(255,255,255,0.75);
+    border-radius: 20px;
+    padding: 10px;
+    width: 90%;
+    margin: auto;
+}
+
+#select2{
+    background-color:rgba(255,255,255,0.75);
+    border-radius: 20px;
+    padding: 10px;
+    width: 90%;
+    margin: auto;
+}
+
+#select1{
+    background-color:rgba(255,255,255,0.75);
+    border-radius: 20px;
+    padding: 10px;
+    width: 90%;
+    margin: auto;
+}
+
+#select4,
+#select2,
+#select1 {
+    margin-bottom: 40px; /* セクション間の下部マージンを追加 */
 }
 
 a:link {
@@ -110,13 +131,28 @@ a:link {
 /* フッター */
 footer {
     padding: 15px 0;
-    background-color: rgba(0, 0, 255, 0.8); /* 青色の背景色に透過効果を追加 */
+    background-color: rgba(0, 102, 204, 0.8); /* ダークブルーの背景色に透過効果を追加 */
     color: #fff;
     text-align: center;
 }
 
 address {
     margin: 20px;
+    color: #ccc; /* ライトグレー */
+}
+
+.select5 {
+    display: inline-block;
+    position: relative;
+    font-size: 1.5rem;
+    background-color: #8fd4ff; /* ライトブルー */
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 0.5em;
+    transition: 0.5s;
+    margin-bottom: 2rem;
 }
 
 /* スマホ用のスタイル */
@@ -127,7 +163,6 @@ address {
         font-size: 20px;
     }
 
-
     h1 {
         font-size: 24px;
     }
@@ -135,7 +170,6 @@ address {
     h3 {
         font-size: 20px;
     }
-
 
     body ul {
         font-size: 19px;
@@ -148,7 +182,7 @@ address {
         margin-bottom: 10px;
     }
 
-    #tyui{
+    #tyui {
         font-size: 20px;
     }
 
@@ -159,11 +193,9 @@ address {
         width: 90%;
     }
 
-
     footer {
         padding: 10px 0;
     }
-
 
     address {
         margin: 10px;

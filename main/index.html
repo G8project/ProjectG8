@@ -4,11 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>othello</title>
+    <title>オセロ！</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpg" href="../images/オセロアイコン.jpg">
 </head>
-
+<header>
+    <div class="main-menu">
+        
+        <div class="sp-menu">
+          <input type="checkbox" id="sp-menu__check">
+          <label for="sp-menu__check" class="sp-menu__box">
+            <span></span>
+          </label>
+          <div class="sp-menu__content">
+            <ul class="sp-menu__list">
+              
+              <li class="sp-menu__item">
+                <a class="sp-menu__link" onclick="turnReverse()">一手戻る</a>
+              </li>
+              <li class="sp-menu__item">
+                <details>
+                  <summary>ルール</summary>
+                  <p class="rulebun">
+                    1,黒と白のチームに分かれてチームメンバーが交互に駒を打つ<br>
+                    2,自分の置いた駒に罰ゲームを入力！<br>
+                    3,罰ゲームを入力した駒をひっくり返したら罰ゲーム実行！！！<br>
+                    超エキサイティング！！！！
+                  </p>
+                </details>
+              </li>
+              <li class="sp-menu__item">
+                <a class="sp-menu__link" href="#itirann">罰ゲーム一覧</a>
+              </li>
+              <li class="sp-menu__item">
+                <a class="sp-menu__link" href="index.html">盤面をリセット</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</header>
 <body>
     <div id="modal">
     </div>
@@ -19,21 +54,27 @@
         <input type="submit" value="完了">
     </form>
     <div id="pussAlert" class="custom-alert">
-        <p>あなたはパスです。</p>
+        <p id="puss">あなたはパスです。</p>
         <button onclick="hideAlertP()">閉じる</button>
     </div>
     <div id="endAlert" class="custom-alert">
         <p>ゲーム終了</p>
+        <h5></h5>
+        <h4 id="endB1"></h4>
+        <h4 id="endB2"></h4>
+        <h4 id="endB3"></h4>
+        <h4 id="endB4"></h4>
         <button onclick="hideAlertE()">閉じる</button>
     </div>
     <div id="batu-gameAlert" class="batu-game-alert">
-        <p id="batu-game">罰ゲーム</p>
-        <button onclick="hideAlertB()">閉じる</button>
+        <p id="batu-game">☠罰ゲーム☠</p>
+        <p id="batu">罰ゲーム内容</p>
+        <button id="batu-button" onclick="hideAlertB()">閉じる</button>
     </div>
 
     <!--ここからは自分たちで書いていないコード-->
     <div id="restartBtn" class="hide">クリックするとスタート画面に戻ります</div>
-        <div id="naraberu">
+    <div id="naraberu">
             <div id="osero">
                 <div id="content">
                     <table id="board"></table>
@@ -43,13 +84,13 @@
                     <h2></h2>
                     <div id="numWhite"></div>
                 </div>
-            </div>
+    </div>
     <!--ここまでは自分たちで書いていないコード-->
             <div id="itirann">
                 <h3 class="black3">罰ゲーム一覧</h3>
             </div>
         </div>
-        <div id="modoru">
+        <div id="topmodoru">
             <a class="select1" href="../title.html" class="btn">タイトルに戻る</a>
         </div>
 

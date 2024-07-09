@@ -5,7 +5,7 @@ body {
     margin: 0;
     font-family: Arial, "游ゴシック","Yu Gothic", sans-serif;
     text-align: center; /* テキスト中央揃え */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.1),rgba(0,0,0,0.1)),url(../images/ダウンロード.jpg);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2),rgba(0,0,0,0.1)),url(../images/ダウンロード.jpg);
 }
 
 img {
@@ -26,6 +26,7 @@ img {
 
 .selection {
     padding: 10px;
+    
 }
 
 
@@ -43,15 +44,17 @@ body ul {
 nav li:not(:last-child) {
     /*メニューの項目 (最後以外)　右側に空白を入れる*/
     margin-right: 80px;
+    
 }
 
 nav a {
     text-decoration: none;
-    color: #0066cc; /* ダークブルー */
+    color: #0066cc;
+    font-weight: bold;
 }
 
 nav a:hover {
-    background-color: #cce7ff; /* ライトブルー */
+    background-color: #cce7ff;
 }
 
 /* メインビジュアル */
@@ -65,6 +68,8 @@ nav a:hover {
 h3 {
     font-size: 25px;
     color: #0066cc; /* ダークブルー */
+    
+    
 }
 
 #tyui {
@@ -72,12 +77,13 @@ h3 {
     width: 80%;
     max-width: 1280px;
     text-align: center;
-    color: black; /* ダークピンク */
+    color: black; 
     background-color: yellow;
     font-size: 35px;
     font-weight: bold;
     margin-bottom: 60px;
     border-radius: 30px;
+    
 }
 
 #select4 p,
@@ -90,6 +96,7 @@ h3 {
     color: #073374; /* ダークブルー */
     font-size: 20px; 
     line-height: 40px;
+    
 
 }
 
@@ -100,6 +107,7 @@ h3 {
     padding: 10px;
     width: 90%;
     margin: auto;
+    
 }
 
 #select2{

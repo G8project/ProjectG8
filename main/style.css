@@ -1,98 +1,93 @@
-
+/*ここから自分たちで書いたコード*/
 html {
-  min-height: 100%;
+    min-height: 100%;
 }
 body {
-  text-align: center;
-  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url(../images/ダウンロード.jpg);
+    text-align: center;
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url(../images/ダウンロード.jpg);
 }
 
+/*入力例のスタイル*/
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+#inputField {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+    outline: none;
+}
+
+#inputField:focus {
+    border-color: #007BFF;
+}
+
+.suggestions {
+    display: none;
+    border: 2px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 25px 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    background: #ffffff;
+    z-index: 1000;
+    width: 100%;
+    position: relative;
+    margin-top: -2px;
+}
+
+.suggestions div {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.suggestions div:hover {
+    background: linear-gradient(90deg, #007BFF 0%, #00C6FF 100%);
+    color: white;
+}
+
+/*罰ゲーム入力フォーム*/
 label {
-  color: #622de9;
-  font-size: 30px;
+    color: #622de9;
+    font-size: 30px;
 }
 input[type=text] {
-  width: 100%;
-  padding: 10px 5px;
-  margin: 14px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+    width: 100%;
+    padding: 10px 5px;
+    margin: 14px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
 }
 input[type=submit] {
-  background-color: #f3074e;
-  color: white;
-  padding: 6px 20px;
-  margin: 2px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: #f3074e;
+    color: white;
+    padding: 8px 130px;
+    margin: 2px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 input[type=submit]:hover {
-  background-color: #3d4eff;
+    background-color: #3d4eff;
 }
 #form {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
-/*ここから自分たちで書いたコード*/
-/* 罰ゲーム表示カスタムアラート */
-.overlay {
-  display: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(54, 52, 52, 0.5);
-  z-index: 9999;
-}
-
-.batu-game-alert {
-  display: none;
-  position: fixed;
-  width: 500px;
-  padding: 20px;
-  background-color: black;
-  border: 1px solid white;
-  border-radius: 5px;
-  z-index: 10000;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-}
-#batu-game {
-color: red;
-font-size: 20px;
-line-height: 0.5;
-}
-#batu {
-color: red;
-font-size: 25px;
-line-height: 1;
-}
-#batu-button {
-background-color: silver;
-}
-
-/*パス＆ゲーム終了アラート*/
-.custom-alert {
-  display: none;
-  position: fixed;
-  width: 300px;
-  padding: 20px;
-  background-color: #87c0f1;
-  border: 1px solid #87c0f1;
-  border-radius: 5px;
-  z-index: 10000;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-}
-
-#form {
+    border-radius: 5px;
+    width: 450px;
+    background-color: #f2f2f2;
+    padding: 20px;
     display: none;
     position: fixed;
     z-index: 10000;
@@ -100,143 +95,211 @@ background-color: silver;
     left: 50%;
     transform: translate(-50%, -30%);
 }
-
 #name {
-  width: 300px;
+    width: 330px;
 }
 
+/* 罰ゲーム表示カスタムアラート */
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(54, 52, 52, 0.5);
+    z-index: 9999;
+}
+
+.batu-game-alert {
+    display: none;
+    position: fixed;
+    width: 450px;
+    padding: 20px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    z-index: 10000;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+}
+#batu-game {
+    color: red;
+    font-size: 20px;
+    line-height: 0.5;
+}
+#batu {
+    color: red;
+    font-size: 25px;
+    line-height: 1;
+}
+#batu-button {
+    background-color: silver;
+}
+/*パス＆ゲーム終了アラート*/
+.custom-alert {
+    display: none;
+    position: fixed;
+    width: 380px;
+    padding: 30px;
+    background-color: #ffffff;
+    color: #622de9;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.custom-alert p {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+}
+
+.custom-alert h4 {
+    font-size: 18px;
+    margin: 12px 0;
+    color: #333;
+    line-height: 1.4;
+}
+
+.custom-alert button {
+    background-color: #f3074e;
+    color: white;
+    padding: 12px 24px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+}
+
+.custom-alert button:hover {
+    background-color: #3d4eff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.custom-alert.show {
+    display: block;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+
 .canPut{
-  color: rgb(224, 224, 224);
-  cursor: pointer;
+    color: rgb(224, 224, 224);
+    cursor: pointer;
 }
 
 #board p{
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /*ここからは参考にしたコード*/
 /* start */
 #modal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(31, 19, 19, 0.8);
-  color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 19, 19, 0.8);
+    color: white;
 }
 
-#menu {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 220px;
-}
 h3,
 p {
-  color: white;
-}
-#menu p {
-  width: 100px;
-  font-size: 24px;
-  padding: 3px;
-  margin: 15px;
-  border: solid 1px white;
-  cursor: pointer;
-  background: black;
-  color: white;
+    color: white;
 }
 
 /* game */
 #board {
-  margin: 0 auto;
-  background: #555555;
+    margin: 0 auto;
+    background: rgb(37, 199, 86);
+    border-collapse: collapse;
 }
 td.cell {
-  background: rgb(37, 199, 86);
-  width: 46px;
-  height: 46px;
-  margin: 2px;
+    border: solid;
+    border-color: #555555;
+    border-width: 2px;
+    width: 46px;
+    height: 46px;
+    margin: 2px;
 }
 .cell div {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  margin: 0 auto;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 auto;
 }
 .cell-6 > tr > td {
-  width: 63px;
-  height: 63px;
+    width: 63px;
+    height: 63px;
 }
 .cell-6 > tr > td > div {
-  width: 50px;
-  height: 50px;
-}
-.cell-4 > tr > td {
-  width: 92px;
-  height: 92px;
-}
-.cell-4 > tr > td > div {
-  width: 70px;
-  height: 70px;
+    width: 50px;
+    height: 50px;
 }
 .black {
-  background: black;
+    background: black;
 }
 .white {
-  background: white;
+    background: white;
 }
 h2 {
-  text-align: center;
-  margin: 5px 0;
+    text-align: center;
+    margin: 5px 0;
 }
 #counter {
-  margin: 0 auto;
-  width: 400px;
-  display: flex;
-  line-height: 50px;
-  font-weight: bold;
-  justify-content: space-between;
+    margin: 0 auto;
+    width: 400px;
+    display: flex;
+    line-height: 50px;
+    font-weight: bold;
+    justify-content: space-between;
 }
 #numBlack {
-  font-size: 36px;
-  margin: 5px;
-  width: 100px;
-  height: 50px;
-  background: black;
-  color: white;
-  border-radius: 5px;
+    font-size: 36px;
+    margin: 5px;
+    width: 100px;
+    height: 50px;
+    background: black;
+    color: white;
+    border-radius: 5px;
 }
 #numWhite {
-  font-size: 36px;
-  margin: 5px;
-  width: 100px;
-  height: 50px;
-  border: solid 1px black;
-  border-radius: 5px;
-  background: white;
+    font-size: 36px;
+    margin: 5px;
+    width: 100px;
+    height: 50px;
+    border: solid 1px black;
+    border-radius: 5px;
+    background: white;
 }
 
-/* end */
-#restartBtn {
-  z-index: 1;
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  font-weight: bold;
-  cursor: pointer;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -215%);
-  color: black;
-  background: white;
-}
+/*画面非表示*/
 .hide {
-  display: none;
+    display: none;
 }
 
 
@@ -255,14 +318,14 @@ h2 {
 }
 
 .black2{
-  color:black;
+    color:black;
 }
 .black3{
-  color: black;
-  font-size: 23px;
+    color: black;
+    font-size: 23px;
 }
 .select1{
-  display: inline-block;
+    display: inline-block;
     position: relative;
     font-size: 1.5rem;
     background-color: rgba(143, 212, 255, 0.977);
@@ -275,125 +338,128 @@ h2 {
     margin-bottom: 2rem;
 }
 h3{
-  font-family:initial;
+    font-family:initial;
 }
 
 /*ディスプレイ表示------------------------------*/
 @media (min-width: 1000px) {
-  #naraberu{
-    display: flex;
-    margin-left: 30rem;
-    width: 800px;
-  }
-  #itirann{
-    margin-left: 5rem;
-    margin-right: 5rem;
-  }
-  #topmodoru{
-    width: 800px;
-    padding-top: 50px;
-    margin-left: 17.5rem;
-  }
-  .rulebun{
-  margin-left: 40px;
-  color: #ffffff;
-  }
-
+    #naraberu{
+        display: flex;
+        margin-left: 30rem;
+        width: 800px;
+    }
+    #itirann{
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+    #topmodoru{
+        width: 800px;
+        padding-top: 50px;
+        margin-left: 17.5rem;
+    }
+    .rulebun{
+        margin-left: 40px;
+        color: #ffffff;
+    }
 }
-
+  
 header {
-  display: flex;
-  height: 60px;
+    display: flex;
+    height: 60px;
 }
 .main-menu {
-  margin: 0 auto;
-  display: flex;
-  width: 600px;
+    margin: 0 auto;
+    display: flex;
+    width: 600px;
 }
-
+  
 .sp-menu__box {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  height: 60px;
-  width: 60px;
-  justify-content: center;
-  align-items: center;
-  z-index: 90;
-  background-color:rgba(18, 8, 95, 0.784);
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color:rgba(18, 8, 95, 0.784);
 }
 .sp-menu__box span,
 .sp-menu__box span:before,
 .sp-menu__box span:after {
-  content: "";
-  display: block;
-  height: 3px;
-  width: 25px;
-  border-radius: 3px;
-  background: #ffffff;
-  position: absolute;
+    content: "";
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background: #ffffff;
+    position: absolute;
 }
 .sp-menu__box span:before {
-  bottom: 8px;
+    bottom: 8px;
 }
 .sp-menu__box span:after {
-  top: 8px;
+    top: 8px;
 }
 #sp-menu__check {
-  display: none;
+    display: none;
 }
 #sp-menu__check:checked ~ .sp-menu__box span {
-  background: rgba(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0);
 }
 #sp-menu__check:checked ~ .sp-menu__box span::before {
-  bottom: 0;
-  transform: rotate(15deg);
+    bottom: 0;
+    transform: rotate(15deg);
 }
 #sp-menu__check:checked ~ .sp-menu__box span::after {
-  top: 0;
-  transform: rotate(-15deg);
+    top: 0;
+    transform: rotate(-15deg);
 }
 #sp-menu__check:checked ~ .sp-menu__content {
-  right: 70%;
+    right: 70%;
 }
 .sp-menu__content {
-  width: 35%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: 100%;
-  z-index: 80;
-  background-color: rgba(18, 8, 95, 0.784);
-  transition: all 0.5s;
+    width: 35%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 100%;
+    z-index: 80;
+    background-color: rgba(18, 8, 95, 0.784);
+    transition: all 0.5s;
 }
 .sp-menu__list {
-  margin-left: 40px;
-  padding: 70px 10px 0;
+    margin-left: 40px;
+    padding: 70px 10px 0;
 }
 .sp-menu__item {
-  border-bottom: solid 1px #ffffff;
-  list-style: none;
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
 }
 .sp-menu__link {
-  display: block;
-  width: 100%;
-  font-size: 15px;
-  box-sizing: border-box;
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  padding: 9px 15px 10px 0;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
 }
 summary{
-  display: block;
-  width: 100%;
-  font-size: 15px;
-  box-sizing: border-box;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 9px 15px 10px 0;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
 }
 .rulebun{
-  font-size: 13px;
-  color: #ffffff;
+    text-align: left;
+    font-size: 13px;
+    color: #ffffff;
 }
